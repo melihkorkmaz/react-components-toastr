@@ -1,24 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Toastr from './components/Toastr';
+
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
+      <Toastr 
+        title="Sticky!" 
+        message="I do not think that word means what you think it means."
+        color="info"
+        position="bottom-center"
+      >
+        {({
+          onShow,
+          onHide,
+          state
+        }) => {
+            return state ? <button onClick={onHide}>Hide</button> : <button onClick={onShow}>Show</button>
+        }}
+      </Toastr>
     </div>
   );
 }
